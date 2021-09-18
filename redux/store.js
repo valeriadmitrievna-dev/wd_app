@@ -1,5 +1,24 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import userReducer from "./user";
+import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
+import {combineReducers} from 'redux';
+
+import {persistReducer} from 'redux-persist';
+import AsyncStorage from '@react-native-community/async-storage';
+import hardSet from 'redux-persist/lib/stateReconciler/hardSet';
+
+import userReducer from './user';
+import walkersReducer from './walkers';
+
+const reducers = combineReducers({
+  user: userReducer,
+  walkers: walkersReducer,
+});
+
+const persistConfig = {
+  key: 'root',
+  storage: AsyncStorage,
+  stateReconciler: hardSet,
+};
+const persistedReducer = persistReducer(persistConfig, reducers);
 
 const middleware = getDefaultMiddleware({
   immutableCheck: false,
@@ -8,9 +27,7 @@ const middleware = getDefaultMiddleware({
 });
 
 export const store = configureStore({
-  reducer: {
-    user: userReducer,
-  },
+  reducer: persistedReducer,
   middleware,
-  devTools: process.env.NODE_ENV !== "production",
+  devTools: process.env.NODE_ENV !== 'production',
 });
