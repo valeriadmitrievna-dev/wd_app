@@ -5,8 +5,8 @@ import Svg, {ClipPath, Defs, G, Path, Rect} from 'react-native-svg';
 const GuideDogIcon = () => (
   <View>
     <Svg
-      width="60"
-      height="60"
+      width="20"
+      height="20"
       viewBox="0 0 60 60"
       fill="none">
       <G clipPath="url(#clip0)">

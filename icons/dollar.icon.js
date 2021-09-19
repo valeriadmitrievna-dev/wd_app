@@ -4,11 +4,7 @@ import Svg, {Path} from 'react-native-svg';
 
 const DollarIcon = () => (
   <View>
-    <Svg
-      width="60"
-      height="60"
-      viewBox="0 0 60 60"
-      fill="none">
+    <Svg width="20" height="20" viewBox="0 0 60 60" fill="none">
       <Path
         d="M58.1016 14.9489V45.0497H1.89844V14.9489H58.1016Z"
         fill="#58935E"

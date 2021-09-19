@@ -12,7 +12,7 @@ export default function OrangeButton({onPress, style, children}) {
         colors={['#FE904B', '#FB724C']}
         style={{
           borderRadius: 14,
-          paddingVertical: 16,
+          padding: 16,
         }}>
         <AuthButtonText>{children}</AuthButtonText>
       </LinearGradient>

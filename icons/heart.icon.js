@@ -5,8 +5,8 @@ import Svg, {Path} from 'react-native-svg';
 const HeartIcon = () => (
   <View>
     <Svg
-      width="60"
-      height="60"
+      width="20"
+      height="20"
       viewBox="0 0 60 60"
       fill="none">
       <Path

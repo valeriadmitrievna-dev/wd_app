@@ -4,7 +4,7 @@ import Svg, {ClipPath, Defs, G, Path, Rect} from 'react-native-svg';
 
 const MedalIcon = () => (
   <View>
-    <Svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+    <Svg width="20" height="20" viewBox="0 0 60 60" fill="none">
       <G clipPath="url(#clip0)">
         <Path
           d="M17.7451 25.9397L4.64209 50.6263L16.5408 49.527L22.2997 59.9982L35.4028 35.3116L17.7451 25.9397Z"
