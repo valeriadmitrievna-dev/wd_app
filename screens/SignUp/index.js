@@ -1,34 +1,36 @@
-import React, { useEffect, useState } from "react";
-import SignUpDetailsWalker from "./index.details.walker";
-import { Keyboard } from "react-native";
-import WarningToast from "./../../components/WarningToast";
-import { TabScreen, TabScreenContainer } from "../../common.styled";
-import BackIcon from "../../Icons/BackIcon";
-import * as A from "../auth.styled";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import SignUpRole from "./index.role";
-import { useToast } from "native-base";
-import SignUpMain from "./index.main";
-import { isEmail } from "validator";
-import SignUpDetailsOwner from "./index.details.owner";
-import { SignUpService } from "../../services/user";
-import { useDispatch } from "react-redux";
-import { auth } from "../../redux/user";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useToast } from 'native-base';
+import React, { useEffect, useState } from 'react';
+import { Keyboard } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { isEmail } from 'validator';
+import { TabScreen, TabScreenContainer } from '../../common.styled';
+import BackIcon from '../../icons/back.icon';
+import { auth, setUser } from '../../redux/user';
+import { SignUpService } from '../../services/user';
+import * as A from '../auth.styled';
+import WarningToast from './../../components/WarningToast';
+import SignUpAvatar from './index.avatar';
+import SignUpDetailsOwner from './index.details.owner';
+import SignUpDetailsWalker from './index.details.walker';
+import SignUpMain from './index.main';
+import SignUpRole from './index.role';
 
 const Stack = createNativeStackNavigator();
 
-export default function SignUp({ navigation }) {
+export default function SignUp({navigation}) {
   const toast = useToast();
   const [role, setRole] = useState();
   const [price, setPrice] = useState(3);
   const [age, setAge] = useState(14);
-  const [experience, setExperience] = useState("");
-  const [location, setLocation] = useState("");
-  const [fullname, setFullname] = useState("");
+  const [experience, setExperience] = useState('');
+  const [location, setLocation] = useState('');
+  const [fullname, setFullname] = useState('');
   const [isLoading, setLoading] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [description, setDescription] = useState("");
+  const [email, setEmail] = useState('');
+  const [profile_photo, setProfilePhoto] = useState('');
+  const [password, setPassword] = useState('');
+  const [description, setDescription] = useState('');
   const [isAgeModalVisible, setAgeModalVisible] = useState(false);
   const [isExperienceModalVisible, setExperienceModalVisible] = useState(false);
   const [isPasswordHidden, setPasswordHidden] = useState(true);
@@ -43,48 +45,56 @@ export default function SignUp({ navigation }) {
     toast.show({
       render: () => <WarningToast title={title} />,
       duration: 3000,
-      placement: "top",
+      placement: 'top',
     });
   };
 
   const goToDetails = () => {
     if (!role) {
-      renderWarningToast("Select role");
+      renderWarningToast('Select role');
     } else {
       navigation.navigate(`Details_${role}`);
     }
   };
 
-  const goToFinish = () => {
-    if (!location || location.trim() === "") {
-      renderWarningToast("Enter your location");
-    } else if (!location.includes(",")) {
-      renderWarningToast("Enter valid location");
-    } else if (role === "walker" && !experience.trim().length)
-      renderWarningToast("Indicate how much experience you have");
+  const goToAvatar = () => {
+    if (!location || location.trim() === '') {
+      renderWarningToast('Enter your location');
+    } else if (!location.includes(',')) {
+      renderWarningToast('Enter valid location');
+    } else if (role === 'walker' && !experience.trim().length)
+      renderWarningToast('Indicate how much experience you have');
     else {
-      navigation.navigate("Finish");
+      navigation.navigate('Avatar');
+    }
+  };
+
+  const goToFinish = () => {
+    if (!profile_photo || !profile_photo.length) {
+      renderWarningToast('Choose profile photo');
+    } else {
+      navigation.navigate('Finish');
     }
   };
 
   const handleSignUp = async () => {
     Keyboard.dismiss();
     if (fullname.length === 0 && fullname.trim().length === 0)
-      renderWarningToast("Full name is empty");
-    else if (fullname.split(" ").filter(word => word !== " ").length < 2) {
-      renderWarningToast("Full name requires at least 2 words");
-    } else if (email.length < 1) renderWarningToast("Email is empty");
-    else if (!isEmail(email.trim())) renderWarningToast("Email is invalid");
+      renderWarningToast('Full name is empty');
+    else if (fullname.split(' ').filter(word => word !== ' ').length < 2) {
+      renderWarningToast('Full name requires at least 2 words');
+    } else if (email.length < 1) renderWarningToast('Email is empty');
+    else if (!isEmail(email.trim())) renderWarningToast('Email is invalid');
     else if (password.length === 0 && password.trim().length === 0)
-      renderWarningToast("Password is empty");
-    else if (password.includes(" "))
+      renderWarningToast('Password is empty');
+    else if (password.includes(' '))
       renderWarningToast("Password can't contain spaces");
     else if (password.length < 6)
-      renderWarningToast("Password length should be 6 or greater");
+      renderWarningToast('Password length should be 6 or greater');
     else {
       setLoading(true);
       const response = await SignUpService({
-        walker: role === "walker",
+        walker: role === 'walker',
         price,
         age,
         location,
@@ -93,13 +103,14 @@ export default function SignUp({ navigation }) {
         password,
         description,
         experience,
+        profile_photo,
       });
       if (response?.data?.error) {
         renderWarningToast(response?.data?.error);
       } else {
-        console.log(response?.data?.token);
-        if (response?.data?.token) {
+        if (response?.data) {
           dispatch(auth());
+          dispatch(setUser(response.data));
         }
       }
       setLoading(false);
@@ -108,16 +119,16 @@ export default function SignUp({ navigation }) {
 
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
-      "keyboardDidShow",
+      'keyboardDidShow',
       () => {
         setKeyboardVisible(true); // or some other action
-      }
+      },
     );
     const keyboardDidHideListener = Keyboard.addListener(
-      "keyboardDidHide",
+      'keyboardDidHide',
       () => {
         setKeyboardVisible(false); // or some other action
-      }
+      },
     );
     return () => {
       keyboardDidHideListener.remove();
@@ -129,10 +140,9 @@ export default function SignUp({ navigation }) {
     <TabScreen>
       <TabScreenContainer
         style={{
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
+          display: 'flex',
+          flexDirection: 'column',
+        }}>
         <A.BackButton onPress={() => navigation.goBack()}>
           <BackIcon />
         </A.BackButton>
@@ -140,8 +150,7 @@ export default function SignUp({ navigation }) {
       <Stack.Navigator
         screenOptions={() => ({
           headerShown: false,
-        })}
-      >
+        })}>
         <Stack.Screen name="Role">
           {props => (
             <SignUpRole
@@ -165,7 +174,7 @@ export default function SignUp({ navigation }) {
               isAgeModalVisible={isAgeModalVisible}
               setAgeModalVisible={setAgeModalVisible}
               setDescription={setDescription}
-              goToFinish={goToFinish}
+              goToAvatar={goToAvatar}
             />
           )}
         </Stack.Screen>
@@ -186,6 +195,16 @@ export default function SignUp({ navigation }) {
               setAgeModalVisible={setAgeModalVisible}
               setDescription={setDescription}
               setExperience={setExperience}
+              goToAvatar={goToAvatar}
+            />
+          )}
+        </Stack.Screen>
+        <Stack.Screen name="Avatar">
+          {props => (
+            <SignUpAvatar
+              {...props}
+              profile_photo={profile_photo}
+              setProfilePhoto={setProfilePhoto}
               goToFinish={goToFinish}
             />
           )}
@@ -212,8 +231,7 @@ export default function SignUp({ navigation }) {
         <TabScreenContainer
           style={{
             marginTop: 20,
-          }}
-        >
+          }}>
           <A.AuthFooterText>
             By signing in, I agree with Terms of Use and Privacy Policy
           </A.AuthFooterText>

@@ -1,10 +1,9 @@
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
 import * as A from '../auth.styled';
-import OwnerIcon from '../../Icons/OwnerIcon';
-import WalkerIcon from './../../Icons/WalkerIcon';
+import OwnerIcon from '../../icons/owner.icon';
+import WalkerIcon from '../../icons/walker.icon';
 import {RadioButtons} from 'react-native-radio-buttons';
-import LinearGradient from 'react-native-linear-gradient';
+import OrangeButton from './../../components/OrangeButton';
 
 const SignUpRole = ({role, setRole, goToDetails}) => {
   function renderOption(option, selected, onSelect, index) {
@@ -39,22 +38,13 @@ const SignUpRole = ({role, setRole, goToDetails}) => {
         renderOption={renderOption}
         renderContainer={renderContainer}
       />
-      <TouchableOpacity
+      <OrangeButton
         style={{
           marginBottom: 30,
         }}
         onPress={goToDetails}>
-        <LinearGradient
-          start={{x: 1, y: 0}}
-          end={{x: 0, y: 0}}
-          colors={['#FE904B', '#FB724C']}
-          style={{
-            borderRadius: 14,
-            paddingVertical: 16,
-          }}>
-          <A.AuthButtonText>next</A.AuthButtonText>
-        </LinearGradient>
-      </TouchableOpacity>
+        next
+      </OrangeButton>
     </A.ScreenView>
   );
 };

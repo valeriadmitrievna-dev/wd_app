@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text } from "react-native";
 import * as W from "./index.styled";
-import CloseIcon from "../../Icons/CloseIcon";
-import VerifiedIcon from "../../Icons/VerifiedIcon";
+import CloseIcon from "../../icons/close.icon";
+import VerifiedIcon from "../../icons/verified.icon";
 import { HDivider, VDivider } from "../../common.styled";
-import StarIcon from "./../../Icons/StarIcon";
+import StarIcon from "./../../icons/star.icon";
 
 export default function WalkerLayout({ walker, closeWalker }) {
   return (

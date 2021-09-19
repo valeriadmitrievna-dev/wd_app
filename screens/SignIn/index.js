@@ -6,7 +6,7 @@ import WarningToast from './../../components/WarningToast';
 import {isEmail} from 'validator';
 import {SignInService} from './../../services/user';
 import {useDispatch} from 'react-redux';
-import {auth} from '../../redux/user';
+import {auth, setUser} from '../../redux/user';
 
 export default function SignIn({navigation}) {
   const toast = useToast();
@@ -45,8 +45,9 @@ export default function SignIn({navigation}) {
       if (response?.data?.error) {
         renderWarningToast(response?.data?.error);
       } else {
-        if (response?.data?.token) {
+        if (response?.data) {
           dispatch(auth());
+          dispatch(setUser(response.data));
         }
       }
       setLoading(false);

@@ -1,9 +1,9 @@
-import React from "react";
-import LinearGradient from "react-native-linear-gradient";
-import * as A from "../auth.styled";
-import HiddenIcon from "../../Icons/HiddenIcon";
-import VisibleIcon from "../../Icons/VisibleIcon";
-import { ActivityIndicator, TouchableOpacity } from "react-native";
+import React from 'react';
+import * as A from '../auth.styled';
+import HiddenIcon from '../../icons/hidden.icon';
+import VisibleIcon from '../../icons/visible.icon';
+import {ActivityIndicator} from 'react-native';
+import OrangeButton from './../../components/OrangeButton';
 
 export default function SignUpMain({
   isPasswordHidden,
@@ -58,22 +58,10 @@ export default function SignUpMain({
           )}
         </A.PasswordSwitch>
       </A.InputContainer>
-      <TouchableOpacity onPress={handleSignUp}>
-        <LinearGradient
-          start={{ x: 1, y: 0 }}
-          end={{ x: 0, y: 0 }}
-          colors={["#FE904B", "#FB724C"]}
-          style={{
-            borderRadius: 14,
-            paddingVertical: 16,
-          }}
-        >
-          <A.AuthButtonText>
-            {!isLoading && <A.AuthButtonText>sign up</A.AuthButtonText>}
-            {isLoading && <ActivityIndicator size="large" color="#f6f7fa" />}
-          </A.AuthButtonText>
-        </LinearGradient>
-      </TouchableOpacity>
+      <OrangeButton onPress={handleSignUp}>
+        {!isLoading && <A.AuthButtonText>sign up</A.AuthButtonText>}
+        {isLoading && <ActivityIndicator size="large" color="#f6f7fa" />}
+      </OrangeButton>
     </A.ScreenView>
   );
 }

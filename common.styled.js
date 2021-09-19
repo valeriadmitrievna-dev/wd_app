@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
 export const TabScreen = styled.SafeAreaView`
   background-color: #fff;
@@ -21,12 +21,12 @@ export const HDivider = styled.View`
   height: 3px;
   width: 100%;
   background-color: #e8e8e8;
-  margin: ${({ m }) => (m ? m : 14)}px 0;
+  margin: ${({m}) => (m ? m : 14)}px 0;
 `;
 
 export const VDivider = styled.View`
-  height: ${({ h }) => (h ? h : 15)}px;
+  height: ${({h}) => (h ? h : 15)}px;
   width: 2px;
   background-color: #a1a1a1;
-  margin: 0 ${({ m }) => (m ? m : 10)}px;
+  margin: 0 ${({m}) => (m ? m : 10)}px;
 `;

@@ -1,7 +1,7 @@
 import React from 'react';
 import {TabScreen, TabScreenContainer} from '../../common.styled';
 import * as H from './index.styled';
-import LocationIcon from './../../Icons/LocationIcon';
+import LocationIcon from './../../icons/location.icon';
 import {Pressable, ScrollView} from 'react-native';
 import WalkerCard from '../../components/WalkerCard';
 import {HDivider} from './../../common.styled';

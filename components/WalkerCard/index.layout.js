@@ -1,8 +1,8 @@
 import React from "react";
 import { View } from "react-native";
 import * as W from "./index.styled";
-import StarIcon from "./../../Icons/StarIcon";
-import LocationIcon from "./../../Icons/LocationIcon";
+import StarIcon from "./../../icons/star.icon";
+import LocationIcon from "./../../icons/location.icon";
 import { JustFlex } from "../../common.styled";
 
 export default function WalkerCardLayout({ walker, margin, showWalker }) {

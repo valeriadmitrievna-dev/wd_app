@@ -2,9 +2,9 @@ import React from "react";
 import LinearGradient from "react-native-linear-gradient";
 import { TabScreen, TabScreenContainer } from "../../common.styled";
 import * as A from "../auth.styled";
-import BackIcon from "./../../Icons/BackIcon";
-import HiddenIcon from "./../../Icons/HiddenIcon";
-import VisibleIcon from "./../../Icons/VisibleIcon";
+import BackIcon from "./../../icons/back.icon";
+import HiddenIcon from "./../../icons/hidden.icon";
+import VisibleIcon from "./../../icons/visible.icon";
 import { ActivityIndicator, TouchableOpacity } from "react-native";
 
 export default function SignInLayout({

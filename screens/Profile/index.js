@@ -1,14 +1,15 @@
-import React from "react";
-import { View, Text } from "react-native";
-import { TabScreen } from "../../common.styled";
-import { TabScreenContainer } from './../../common.styled';
+import React from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {logout} from '../../redux/user';
+import ProfileLayout from './index.layout';
 
 export default function Profile() {
-  return (
-    <TabScreen>
-      <TabScreenContainer>
-        <Text>Profile</Text>
-      </TabScreenContainer>
-    </TabScreen>
-  );
+  const dispatch = useDispatch();
+  const {user} = useSelector(state => state.user);
+
+  const handleLogOut = () => {
+    dispatch(logout());
+  };
+
+  return <ProfileLayout handleLogOut={handleLogOut} user={user} />;
 }

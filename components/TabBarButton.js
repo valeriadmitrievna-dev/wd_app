@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components/native";
-import HomeIcon from "./../Icons/HomeIcon";
-import MomentsIcon from "./../Icons/MomentsIcon";
-import ChatIcon from "./../Icons/ChatIcon";
-import ProfileIcon from "./../Icons/ProfileIcon";
+import HomeIcon from "./../icons/home.icon";
+import MomentsIcon from "./../icons/moments.icon";
+import ChatIcon from "./../icons/chat.icon";
+import ProfileIcon from "./../icons/profile.icon";
 
 const TabButton = styled.Pressable`
   width: 25%;
