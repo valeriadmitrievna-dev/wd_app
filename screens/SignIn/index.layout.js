@@ -39,6 +39,7 @@ export default function SignInLayout({
             placeholder="email@email.com"
             autoCompleteType="email"
             keyboardType="email-address"
+            placeholderTextColor="#a1a1a1"
             onChangeText={setEmail}
             name="email"
           />
@@ -50,6 +51,7 @@ export default function SignInLayout({
             secureTextEntry={isPasswordHidden}
             placeholder="qwerty123"
             onChangeText={setPassword}
+            placeholderTextColor="#a1a1a1"
           />
           <A.PasswordSwitch onPress={switchPasswordVidibility}>
             {isPasswordHidden ? (

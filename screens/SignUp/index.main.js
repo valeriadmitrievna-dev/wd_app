@@ -29,6 +29,7 @@ export default function SignUpMain({
           placeholder="John Smith"
           onChangeText={setFullname}
           value={fullname}
+          placeholderTextColor="#a1a1a1"
         />
       </A.InputContainer>
       <A.InputContainer>
@@ -39,6 +40,7 @@ export default function SignUpMain({
           keyboardType="email-address"
           onChangeText={setEmail}
           value={email}
+          placeholderTextColor="#a1a1a1"
         />
       </A.InputContainer>
       <A.InputContainer>
@@ -49,6 +51,7 @@ export default function SignUpMain({
           placeholder="qwerty123"
           onChangeText={setPassword}
           value={password}
+          placeholderTextColor="#a1a1a1"
         />
         <A.PasswordSwitch onPress={switchPasswordVidibility}>
           {isPasswordHidden ? (

@@ -4,7 +4,7 @@ import {RadioButtons} from 'react-native-radio-buttons';
 import OrangeButton from './../../components/OrangeButton';
 import {Image, Stack, Button} from 'native-base';
 import {Pressable} from 'react-native';
-import default_avatars from './../../constants';
+import {default_avatars} from '../../constants';
 
 const SignUpAvatar = ({goToFinish, profile_photo, setProfilePhoto}) => {
   function renderOption(option, selected, onSelect, index) {
@@ -17,7 +17,7 @@ const SignUpAvatar = ({goToFinish, profile_photo, setProfilePhoto}) => {
         bg={selected ? '#FE904B' : '#fff'}>
         <Image
           key={index}
-          size={100}
+          size={79}
           resizeMode={'cover'}
           borderRadius={200}
           source={{uri: option}}
@@ -50,7 +50,7 @@ const SignUpAvatar = ({goToFinish, profile_photo, setProfilePhoto}) => {
         </A.AuthSubtitle>
       </A.AuthHeader>
       <RadioButtons
-        options={default_avatars}
+        options={default_avatars || []}
         onSelection={setProfilePhoto}
         selectedOption={profile_photo}
         renderOption={renderOption}

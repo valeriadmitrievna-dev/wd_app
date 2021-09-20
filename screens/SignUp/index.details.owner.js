@@ -74,7 +74,11 @@ export default function SignUpDetailsOwner({
       <Box mb="20px">
         <A.InputContainer style={{marginBottom: 5}}>
           <A.InputLabel>Location</A.InputLabel>
-          <A.Input placeholder="New York, USA" onChangeText={setLocation} />
+          <A.Input
+            placeholder="New York, USA"
+            onChangeText={setLocation}
+            placeholderTextColor="#a1a1a1"
+          />
         </A.InputContainer>
         <A.InputExample>
           e.g.<Text style={{color: '#000'}}> Tokyo, Japan</Text>
@@ -88,6 +92,7 @@ export default function SignUpDetailsOwner({
           placeholder="A few words about youself"
           onChangeText={setDescription}
           multiline={true}
+          placeholderTextColor="#a1a1a1"
         />
       </A.TransparentInputContainer>
       <OrangeButton onPress={goToAvatar}>next</OrangeButton>

@@ -8,7 +8,7 @@ import {
   differenceInYears,
   format,
   sub,
-  formatDistance,
+  formatDistanceStrict,
   startOfDay,
 } from 'date-fns';
 
@@ -91,11 +91,10 @@ export default function SignUpDetailsWalker({
               style={{borderRadius: 10}}
               onDateChange={d => {
                 setExperience(
-                  formatDistance(
-                    startOfDay(new Date()),
+                  formatDistanceStrict(
                     startOfDay(new Date(d)),
-                    {addSuffix: true},
-                  ).replace('less than a minute ago', 'without experience'),
+                    startOfDay(new Date()),
+                  ).replace('0 seconds', 'without experience'),
                 );
                 setExperienceModalVisible(false);
               }}
@@ -115,9 +114,13 @@ export default function SignUpDetailsWalker({
         <A.AuthSubtitle>Fill in your walker details</A.AuthSubtitle>
       </A.AuthHeader>
       <Box mb="20px">
-        <A.InputContainer style={{marginBottom: 5}}>
+        <A.InputContainer style={{marginBottom: 1}}>
           <A.InputLabel>Location</A.InputLabel>
-          <A.Input placeholder="New York, USA" onChangeText={setLocation} />
+          <A.Input
+            placeholder="New York, USA"
+            onChangeText={setLocation}
+            placeholderTextColor="#a1a1a1"
+          />
         </A.InputContainer>
         <A.InputExample>
           e.g.<Text style={{color: '#000'}}> Tokyo, Japan</Text>
@@ -148,12 +151,13 @@ export default function SignUpDetailsWalker({
         </A.InputHeader>
         <Button
           mt={2}
-          bg="#b0b0b0"
+          bg="#e5e5e5"
           borderRadius={10}
           _text={{
             fontSize: 17,
             lineHeight: '24px',
             fontFamily: 'Poppins-SemiBold',
+            color: '#555',
           }}
           onPress={() => setAgeModalVisible(true)}>
           Select birth date
@@ -166,12 +170,13 @@ export default function SignUpDetailsWalker({
         </A.InputHeader>
         <Button
           mt={2}
-          bg="#b0b0b0"
+          bg="#e5e5e5"
           borderRadius={10}
           _text={{
             fontSize: 17,
             lineHeight: '24px',
             fontFamily: 'Poppins-SemiBold',
+            color: '#555',
           }}
           onPress={() => setExperienceModalVisible(true)}>
           Select start of walker experience
@@ -185,6 +190,7 @@ export default function SignUpDetailsWalker({
           placeholder="A few words about youself"
           onChangeText={setDescription}
           multiline={true}
+          placeholderTextColor="#a1a1a1"
         />
       </A.TransparentInputContainer>
       <OrangeButton onPress={goToAvatar}>next</OrangeButton>

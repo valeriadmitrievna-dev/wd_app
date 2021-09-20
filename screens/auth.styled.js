@@ -37,15 +37,15 @@ export const InputContainer = styled.View`
 `;
 
 export const InputLabel = styled.Text`
-  font-size: 10px;
-  line-height: 24px;
+  font-size: 13px;
+  line-height: 25px;
   color: #aeaeb2;
   font-family: 'Poppins-SemiBold';
 `;
 
 export const Input = styled.TextInput`
   font-size: 17px;
-  line-height: 22px;
+  line-height: 24px;
   color: #2b2b2b;
   font-family: 'Poppins-SemiBold';
   padding: 0;
@@ -135,15 +135,15 @@ export const InputHeader = styled.View`
 `;
 
 export const InputBigLabel = styled.Text`
-  font-size: 22px;
-  line-height: 33px;
-  color: #2b2b2b;
-  font-family: 'Poppins-SemiBold';
+  font-size: 17px;
+  line-height: 25px;
+  color: #7a7a7a;
+  font-family: 'Poppins-Bold';
 `;
 
 export const InputBigValue = styled.Text`
-  font-size: 22px;
-  line-height: 33px;
+  font-size: 17px;
+  line-height: 25px;
   color: #2b2b2b;
   font-family: 'Poppins-Bold';
 `;
