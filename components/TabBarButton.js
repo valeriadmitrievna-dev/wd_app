@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components/native";
-import HomeIcon from "./../icons/home.icon";
-import MomentsIcon from "./../icons/moments.icon";
-import ChatIcon from "./../icons/chat.icon";
-import ProfileIcon from "./../icons/profile.icon";
+import React from 'react';
+import styled from 'styled-components/native';
+import HomeIcon from './../icons/home.icon';
+import MomentsIcon from './../icons/moments.icon';
+import ChatIcon from './../icons/chat.icon';
+import ProfileIcon from './../icons/profile.icon';
 
 const TabButton = styled.Pressable`
   width: 25%;
@@ -17,8 +17,8 @@ const TabButton = styled.Pressable`
 const TabTitle = styled.Text`
   font-size: 10px;
   line-height: 15px;
-  color: ${({ color }) => color};
-  font-family: "Poppins-Black";
+  color: ${({color}) => color};
+  font-family: 'Poppins-Black';
 `;
 
 const TabBadge = styled.View`
@@ -31,17 +31,25 @@ const TabBadge = styled.View`
   z-index: 1;
 `;
 
-export default function TabBarButton({ props }) {
-  const newMessages = 1;
-  const color = props.accessibilityState.selected ? "#2B2B2B" : "#AEAEB2";
-  const route = props.to.replace("/Root/", "");
+export default function TabBarButton({
+  accessibilityState,
+  notifications,
+  new_messages,
+  to,
+  onPress,
+}) {
+  const color = accessibilityState?.selected ? '#2B2B2B' : '#AEAEB2';
+  const route = to?.replace('/Root/', '').replace('/Notifications/', '');
   return (
-    <TabButton onPress={props.onPress}>
-      {route === "Chat" && newMessages > 0 && <TabBadge />}
-      {route === "Home" && <HomeIcon color={color} />}
-      {route === "Moments" && <MomentsIcon color={color} />}
-      {route === "Chat" && <ChatIcon color={color} />}
-      {route === "Profile" && <ProfileIcon color={color} />}
+    <TabButton onPress={onPress}>
+      {/* badges */}
+      {route === 'Chat' && new_messages > 0 && <TabBadge />}
+      {route === 'Profile' && !notifications?.checked && <TabBadge />}
+      {/* icons */}
+      {route === 'Home' && <HomeIcon color={color} />}
+      {route === 'Moments' && <MomentsIcon color={color} />}
+      {route === 'Chat' && <ChatIcon color={color} />}
+      {route === 'Profile' && <ProfileIcon color={color} />}
       <TabTitle color={color}>{route}</TabTitle>
     </TabButton>
   );

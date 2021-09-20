@@ -4,6 +4,7 @@ import {RadioButtons} from 'react-native-radio-buttons';
 import OrangeButton from './../../components/OrangeButton';
 import {Image, Stack, Button} from 'native-base';
 import {Pressable} from 'react-native';
+import default_avatars from './../../constants';
 
 const SignUpAvatar = ({goToFinish, profile_photo, setProfilePhoto}) => {
   function renderOption(option, selected, onSelect, index) {
@@ -49,14 +50,7 @@ const SignUpAvatar = ({goToFinish, profile_photo, setProfilePhoto}) => {
         </A.AuthSubtitle>
       </A.AuthHeader>
       <RadioButtons
-        options={[
-          'https://woodog.s3.us-east-1.amazonaws.com/man_1.jpg',
-          'https://woodog.s3.us-east-1.amazonaws.com/man_2.jpg',
-          'https://woodog.s3.us-east-1.amazonaws.com/man_3.jpg',
-          'https://woodog.s3.us-east-1.amazonaws.com/woman_1.jpg',
-          'https://woodog.s3.us-east-1.amazonaws.com/woman_2.jpg',
-          'https://woodog.s3.us-east-1.amazonaws.com/woman_3.jpg',
-        ]}
+        options={default_avatars}
         onSelection={setProfilePhoto}
         selectedOption={profile_photo}
         renderOption={renderOption}
@@ -66,8 +60,7 @@ const SignUpAvatar = ({goToFinish, profile_photo, setProfilePhoto}) => {
         style={{
           marginBottom: 30,
         }}
-        onPress={goToFinish}
-      >
+        onPress={goToFinish}>
         next
       </OrangeButton>
     </A.ScreenView>

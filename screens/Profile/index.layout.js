@@ -1,10 +1,8 @@
 import React from 'react';
-import {TabScreen} from '../../common.styled';
-import {TabScreenContainer} from './../../common.styled';
+import * as P from './index.styled';
 import OrangeButton from './../../components/OrangeButton';
 import SettingsIcon from './../../icons/settings.icon';
 import NotificationIcon from './../../icons/notification.icon';
-import * as P from './index.styled';
 import {Center, Image, Stack} from 'native-base';
 import LocationIcon from './../../icons/location.icon';
 import GuideDogIcon from './../../icons/guide_dog.icon';
@@ -12,14 +10,19 @@ import HeartIcon from './../../icons/heart.icon';
 import MedalIcon from './../../icons/medal.icon';
 import DollarIcon from './../../icons/dollar.icon';
 
-export default function ProfileLayout({handleLogOut, user}) {
+export default function ProfileLayout({
+  handleLogOut,
+  user,
+  goToSettings,
+  goToNotifications,
+}) {
   return (
     <P.ProfileContainer>
       <P.ProfileHeader>
-        <P.HeaderButton>
+        <P.HeaderButton onPress={goToSettings}>
           <SettingsIcon />
         </P.HeaderButton>
-        <P.HeaderButton>
+        <P.HeaderButton onPress={goToNotifications}>
           <NotificationIcon />
         </P.HeaderButton>
       </P.ProfileHeader>

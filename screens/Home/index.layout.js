@@ -17,7 +17,7 @@ export default function HomeLayout({walkers, navigation}) {
           </H.HomeHeader>
           <H.InputContainer>
             <LocationIcon />
-            <H.Input placeholder="Search" />
+            <H.Input placeholder="Search" placeholderTextColor="#a1a1a1" />
           </H.InputContainer>
           {walkers.filter(walker => walker.distance <= 10).length > 0 && (
             <>

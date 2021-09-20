@@ -5,7 +5,7 @@ export const BackgroundImage = styled.ImageBackground`
   width: 100%;
   height: 60%;
   padding: 16px;
-  padding-top: 30px;
+  padding-top: 15px;
 `;
 
 export const WalkerHeader = styled.View`

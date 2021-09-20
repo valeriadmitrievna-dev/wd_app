@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {logout} from '../../redux/user';
 import ProfileLayout from './index.layout';
 
-export default function Profile() {
+export default function Profile({navigation}) {
   const dispatch = useDispatch();
   const {user} = useSelector(state => state.user);
 
@@ -11,5 +11,19 @@ export default function Profile() {
     dispatch(logout());
   };
 
-  return <ProfileLayout handleLogOut={handleLogOut} user={user} />;
+  const goToSettings = () => {
+    navigation.navigate('Settings');
+  };
+  const goToNotifications = () => {
+    navigation.navigate('Notifications');
+  };
+
+  return (
+    <ProfileLayout
+      handleLogOut={handleLogOut}
+      user={user}
+      goToSettings={goToSettings}
+      goToNotifications={goToNotifications}
+    />
+  );
 }

@@ -90,7 +90,6 @@ export default function SignUpDetailsOwner({
           multiline={true}
         />
       </A.TransparentInputContainer>
-
       <OrangeButton onPress={goToAvatar}>next</OrangeButton>
     </A.ScreenView>
   );
