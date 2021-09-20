@@ -27,7 +27,8 @@ const TabBadge = styled.View`
   height: 7px;
   border-radius: 3.5px;
   position: absolute;
-  top: 17.5px;
+  top: 23%;
+  left: 41%;
   z-index: 1;
 `;
 
@@ -39,7 +40,11 @@ export default function TabBarButton({
   onPress,
 }) {
   const color = accessibilityState?.selected ? '#2B2B2B' : '#AEAEB2';
-  const route = to?.replace('/Root/', '').replace('/Notifications/', '');
+  const route = to
+    ?.replace('/Root/', '')
+    .replace('/Notifications/', '')
+    .replace('/Walker/', '')
+    .replace('/Settings/', '');
   return (
     <TabButton onPress={onPress}>
       {/* badges */}

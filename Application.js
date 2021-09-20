@@ -2,8 +2,9 @@ import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {useDispatch, useSelector} from 'react-redux';
-import {StatusBar, Text} from 'react-native';
+import {useSelector} from 'react-redux';
+import {StatusBar} from 'react-native';
+import GetLocation from 'react-native-get-location';
 
 // screens
 import Home from './screens/Home/index';
@@ -16,7 +17,6 @@ import Walker from './screens/Walker/index';
 import Index from './screens/Index/index';
 
 import TabBarButton from './components/TabBarButton';
-import {auth, setUser} from './redux/user';
 import Settings from './screens/Settings/index';
 import Notifications from './screens/Notifications/index';
 
@@ -55,6 +55,21 @@ export default function Application() {
   const {isAuth, notifications, new_messages} = useSelector(
     state => state.user,
   );
+
+  useEffect(() => {
+    // GetLocation.getCurrentPosition({
+    //   enableHighAccuracy: true,
+    //   timeout: 15000,
+    // })
+    //   .then(location => {
+    //     console.log(location);
+    //   })
+    //   .catch(error => {
+    //     const {code, message} = error;
+    //     console.warn(code);
+    //     console.log(message);
+    //   });
+  }, []);
 
   return (
     <NavigationContainer>
