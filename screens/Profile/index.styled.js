@@ -23,6 +23,18 @@ export const HeaderButton = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
+  position: relative;
+`;
+
+export const Badge = styled.View`
+  background: #e73a40;
+  width: 7px;
+  height: 7px;
+  border-radius: 3.5px;
+  position: absolute;
+  top: 11px;
+  right: 13px;
+  z-index: 1;
 `;
 
 export const ProfileName = styled.Text`

@@ -5,7 +5,7 @@ import ProfileLayout from './index.layout';
 
 export default function Profile({navigation}) {
   const dispatch = useDispatch();
-  const {user} = useSelector(state => state.user);
+  const {user, notifications} = useSelector(state => state.user);
 
   const handleLogOut = () => {
     dispatch(logout());
@@ -24,6 +24,7 @@ export default function Profile({navigation}) {
       user={user}
       goToSettings={goToSettings}
       goToNotifications={goToNotifications}
+      notifications={notifications}
     />
   );
 }

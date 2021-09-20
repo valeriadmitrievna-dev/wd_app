@@ -3,7 +3,7 @@ import {createSlice} from '@reduxjs/toolkit';
 const userSlice = createSlice({
   name: 'user',
   initialState: {
-    isAuth: false,
+    isAuth: true,
     user: {
       _id: '614689613026991288da9dc4',
       created: new Date('2021-09-19T00:44:21.177Z'),

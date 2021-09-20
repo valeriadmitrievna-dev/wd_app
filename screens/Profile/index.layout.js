@@ -13,6 +13,7 @@ import DollarIcon from './../../icons/dollar.icon';
 export default function ProfileLayout({
   handleLogOut,
   user,
+  notifications,
   goToSettings,
   goToNotifications,
 }) {
@@ -23,6 +24,7 @@ export default function ProfileLayout({
           <SettingsIcon />
         </P.HeaderButton>
         <P.HeaderButton onPress={goToNotifications}>
+          {!notifications?.checked && <P.Badge />}
           <NotificationIcon />
         </P.HeaderButton>
       </P.ProfileHeader>
