@@ -35,7 +35,7 @@ const TabBadge = styled.View`
 export default function TabBarButton({
   accessibilityState,
   notifications,
-  new_messages,
+  uncheckedMessages,
   to,
   onPress,
 }) {
@@ -44,11 +44,12 @@ export default function TabBarButton({
     ?.replace('/Root/', '')
     .replace('/Notifications/', '')
     .replace('/Walker/', '')
-    .replace('/Settings/', '');
+    .replace('/Settings/', '')
+    .replace('/Dialog/', '');
   return (
     <TabButton onPress={onPress}>
       {/* badges */}
-      {route === 'Chat' && new_messages > 0 && <TabBadge />}
+      {route === 'Chat' && uncheckedMessages && <TabBadge />}
       {route === 'Profile' && !notifications?.checked && <TabBadge />}
       {/* icons */}
       {route === 'Home' && <HomeIcon color={color} />}

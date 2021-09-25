@@ -15,6 +15,7 @@ const userSlice = createSlice({
       pets: [],
       profile_photo: 'https://woodog.s3.us-east-1.amazonaws.com/woman_3.jpg',
       walker: true,
+      online: true,
       walker_info: {
         age: 14,
         description: '',
@@ -57,7 +58,6 @@ const userSlice = createSlice({
         },
       ],
     },
-    new_messages: 1,
   },
   reducers: {
     auth: state => {

@@ -19,11 +19,12 @@ import Index from './screens/Index/index';
 import TabBarButton from './components/TabBarButton';
 import Settings from './screens/Settings/index';
 import Notifications from './screens/Notifications/index';
+import Dialog from './screens/Dialog';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-const Root = ({notifications, new_messages}) => {
+const Root = ({notifications, uncheckedMessages}) => {
   return (
     <Tab.Navigator
       screenOptions={() => ({
@@ -38,7 +39,7 @@ const Root = ({notifications, new_messages}) => {
         tabBarButton: props => (
           <TabBarButton
             {...props}
-            new_messages={new_messages}
+            uncheckedMessages={uncheckedMessages}
             notifications={notifications}
           />
         ),
@@ -52,9 +53,8 @@ const Root = ({notifications, new_messages}) => {
 };
 
 export default function Application() {
-  const {isAuth, notifications, new_messages} = useSelector(
-    state => state.user,
-  );
+  const {isAuth, notifications, user} = useSelector(state => state.user);
+  const dialogues = useSelector(state => state.chat);
 
   useEffect(() => {
     // GetLocation.getCurrentPosition({
@@ -77,7 +77,7 @@ export default function Application() {
         screenOptions={() => ({
           headerShown: false,
         })}>
-        {!isAuth && (
+        {(!isAuth || !user) && (
           <>
             <Stack.Screen name="Index" component={Index} />
             <Stack.Screen name="SignUp" component={SignUp} />
@@ -91,12 +91,13 @@ export default function Application() {
                 <Root
                   {...props}
                   notifications={notifications}
-                  new_messages={new_messages}
+                  uncheckedMessages={dialogues.some(d => !d.checked)}
                 />
               )}
             </Stack.Screen>
             <Stack.Screen name="Walker" component={Walker} />
             <Stack.Screen name="Settings" component={Settings} />
+            <Stack.Screen name="Dialog" component={Dialog} />
             <Stack.Screen name="Notifications">
               {props => (
                 <Notifications {...props} notifications={notifications} />

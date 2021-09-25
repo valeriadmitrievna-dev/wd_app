@@ -1,14 +1,12 @@
-import React from "react";
-import { View, Text, Button } from "react-native";
-import { TabScreen } from "../../common.styled";
-import { TabScreenContainer } from "./../../common.styled";
+import React from 'react';
+import ChatLayout from './index.layout';
+import {useSelector} from 'react-redux';
 
-export default function Chat({ navigation }) {
+export default function Chat({navigation}) {
+  const dialogues = useSelector(state => state.chat);
+  const {user} = useSelector(state => state.user);
+
   return (
-    <TabScreen>
-      <TabScreenContainer>
-        <Text>Chat</Text>
-      </TabScreenContainer>
-    </TabScreen>
+    <ChatLayout dialogues={dialogues} user={user} navigation={navigation} />
   );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, Pressable, ScrollView} from 'react-native';
+import {View, Pressable, ScrollView} from 'react-native';
 import {TabScreen, TabScreenContainer} from './../../common.styled';
 import * as H from '../Home/index.styled';
 import * as N from './index.styled';
@@ -7,7 +7,6 @@ import {ArrowBackIcon, Image, Stack} from 'native-base';
 import {format} from 'date-fns';
 
 export default function NotificationsLayout({navigation, notifications}) {
-  console.log(notifications);
   return (
     <TabScreen>
       <TabScreenContainer style={{paddingTop: 20}}>
@@ -22,14 +21,14 @@ export default function NotificationsLayout({navigation, notifications}) {
       <ScrollView>
         <TabScreenContainer>
           <Stack space="15px">
-            {notifications.map(ns => (
-              <View>
+            {notifications.map((ns, id) => (
+              <View key={id}>
                 <N.NotificationGroupDate>
                   {format(new Date(ns.date), 'dd MMMM yyyy')}
                 </N.NotificationGroupDate>
                 <Stack space="10px">
                   {ns.list.map(n => (
-                    <N.NotificationBlock>
+                    <N.NotificationBlock key={n._id}>
                       <Image
                         source={{
                           uri:

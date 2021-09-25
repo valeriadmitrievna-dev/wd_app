@@ -30,3 +30,8 @@ export const VDivider = styled.View`
   background-color: #a1a1a1;
   margin: 0 ${({m}) => (m ? m : 10)}px;
 `;
+
+export const FullScreenScrollView = styled.ScrollView`
+  flex: 1;
+  display: flex;
+`;

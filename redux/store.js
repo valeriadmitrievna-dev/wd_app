@@ -7,10 +7,12 @@ import hardSet from 'redux-persist/lib/stateReconciler/hardSet';
 
 import userReducer from './user';
 import walkersReducer from './walkers';
+import chatReducer from './chat';
 
 const reducers = combineReducers({
   user: userReducer,
   walkers: walkersReducer,
+  chat: chatReducer,
 });
 
 const persistConfig = {

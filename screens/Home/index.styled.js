@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
 export const HomeHeader = styled.View`
   padding-top: 16px;
@@ -9,14 +9,14 @@ export const HomeHeaderTitle = styled.Text`
   font-size: 34px;
   line-height: 51px;
   color: #2b2b2b;
-  font-family: "Poppins-Black";
+  font-family: 'Poppins-Black';
 `;
 
 export const HomeHeaderText = styled.Text`
   font-size: 17px;
   line-height: 25px;
   color: #b0b0b0;
-  font-family: "Poppins-Bold";
+  font-family: 'Poppins-Bold';
 `;
 
 export const InputContainer = styled.View`
@@ -26,14 +26,14 @@ export const InputContainer = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 22px;
+  margin-bottom: ${({mb}) => (mb > -1 ? mb : 22)}px;
 `;
 
 export const Input = styled.TextInput`
   font-size: 17px;
-  line-height: 17px;
+  line-height: 20px;
   color: #a1a1a1;
-  font-family: "Poppins-Bold";
+  font-family: 'Poppins-Bold';
   flex-grow: 1;
   margin-left: 5px;
   margin-top: 3px;
@@ -52,7 +52,7 @@ export const HomeCategoryTitle = styled.Text`
   font-size: 34px;
   line-height: 51px;
   color: #2b2b2b;
-  font-family: "Poppins-Black";
+  font-family: 'Poppins-Black';
 `;
 
 export const ViewAllButton = styled.Text`
@@ -60,7 +60,7 @@ export const ViewAllButton = styled.Text`
   line-height: 22px;
   text-decoration-line: underline;
   color: #2b2b2b;
-  font-family: "Poppins-Regular";
+  font-family: 'Poppins-Regular';
 `;
 
 export const HomeHorizontalContainer = styled.ScrollView`
@@ -69,4 +69,3 @@ export const HomeHorizontalContainer = styled.ScrollView`
   width: 100%;
   padding-bottom: 10px;
 `;
-
