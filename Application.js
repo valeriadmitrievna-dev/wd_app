@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useSelector} from 'react-redux';
-import {StatusBar} from 'react-native';
+import {LogBox, StatusBar} from 'react-native';
 import GetLocation from 'react-native-get-location';
 
 // screens
@@ -20,6 +20,7 @@ import TabBarButton from './components/TabBarButton';
 import Settings from './screens/Settings/index';
 import Notifications from './screens/Notifications/index';
 import Dialog from './screens/Dialog';
+import MomentDetails from './screens/MomentDetails';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -70,6 +71,12 @@ export default function Application() {
     //     console.log(message);
     //   });
   }, []);
+  useEffect(() => {
+    LogBox.ignoreLogs([
+      'VirtualizedLists should never be nested',
+      'Non-serializable values were found in the navigation state',
+    ]);
+  }, []);
 
   return (
     <NavigationContainer>
@@ -96,6 +103,7 @@ export default function Application() {
               )}
             </Stack.Screen>
             <Stack.Screen name="Walker" component={Walker} />
+            <Stack.Screen name="MomentDetails" component={MomentDetails} />
             <Stack.Screen name="Settings" component={Settings} />
             <Stack.Screen name="Dialog" component={Dialog} />
             <Stack.Screen name="Notifications">

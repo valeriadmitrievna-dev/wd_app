@@ -1,14 +1,13 @@
-import React from "react";
-import { Text } from "react-native";
-import { TabScreen } from "../../common.styled";
-import { TabScreenContainer } from "./../../common.styled";
+import React, {useEffect} from 'react';
+import {useSelector} from 'react-redux';
+import MomentsLayout from './index.layout';
 
-export default function Moments() {
-  return (
-    <TabScreen>
-      <TabScreenContainer>
-        <Text>Moments</Text>
-      </TabScreenContainer>
-    </TabScreen>
-  );
+export default function Moments({navigation}) {
+  const moments = useSelector(state => state.moments);
+
+  const checkMoment = moment => {
+    navigation.navigate('MomentDetails', moment);
+  };
+
+  return <MomentsLayout moments={moments} checkMoment={checkMoment} />;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, Dimensions} from 'react-native';
+import {View, TouchableOpacity, Dimensions} from 'react-native';
 import {TabScreen, FullScreenScrollView} from '../../common.styled';
 import {ArrowBackIcon, Image} from 'native-base';
 import * as D from './index.styled';

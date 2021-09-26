@@ -45,6 +45,7 @@ export default function TabBarButton({
     .replace('/Notifications/', '')
     .replace('/Walker/', '')
     .replace('/Settings/', '')
+    .replace('/MomentDetails/', '')
     .replace('/Dialog/', '');
   return (
     <TabButton onPress={onPress}>
